@@ -9,6 +9,7 @@ export class UserService {
 
   constructor(private fb: FormBuilder, private http: HttpClient) { }
   readonly BaseURI = 'http://localhost:3030/api';
+  readonly BaseURII = 'http://localhost:4040/api';
 
   formModel = this.fb.group({
     UserName: ['', Validators.required],
@@ -19,6 +20,13 @@ export class UserService {
       ConfirmPassword: ['', Validators.required]
     }, { validator: this.comparePasswords })
 
+  });
+
+  formModel2 = this.fb.group({
+    Id_Producto: ['', Validators.required],
+    name_producto: ['', Validators.required],
+    description_producto: [''],
+    precio_producto: ['', Validators.required]
   });
 
   comparePasswords(fb: FormGroup) {
@@ -38,15 +46,31 @@ export class UserService {
       FullName: this.formModel.value.FullName,
       Password: this.formModel.value.Passwords.Password
     };
+    console.log(body);
     return this.http.post(this.BaseURI + '/registrar', body);
   }
 
   login(formData) {
+    console.log(formData);
     return this.http.post(this.BaseURI + '/login', formData);
   }
 
+  registerProducto() {
+    var body = {
+      Id_Producto: this.formModel2.value.Id_Producto,
+      name_producto: this.formModel2.value.name_producto,
+      description_producto: this.formModel2.value.description_producto,
+      precio_producto: this.formModel2.value.precio_producto
+    };
+    console.log(body);
+    return this.http.post(this.BaseURI + '/createproducto', body);
+  }
 
   getUserProfile() {
     return this.http.get(this.BaseURI + '/UserProfile');
+  }
+
+  getProductos() {
+    return this.http.get(this.BaseURII + '/producto');
   }
 }

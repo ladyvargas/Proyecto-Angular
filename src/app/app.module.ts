@@ -11,6 +11,8 @@ import { UserComponent } from './user/user.component';
 import { RegistrationComponent } from './user/registration/registration.component';
 import { UserService } from './shared/user.service';
 import { LoginComponent } from './user/login/login.component';
+import { ProductoComponent } from './user/producto/producto.component';
+import { VerProductosComponent } from './user/producto/verproducto.component';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
@@ -20,6 +22,8 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     UserComponent,
     RegistrationComponent,
     LoginComponent,
+    ProductoComponent,
+    VerProductosComponent,
     HomeComponent
   ],
   imports: [

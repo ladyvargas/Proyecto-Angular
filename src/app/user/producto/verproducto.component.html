@@ -1,0 +1,52 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white">PRODUCTOS</a>
+  <button class="btn btn-success" (click)="ingresar()">Ingresar</button>
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Salir</button>
+</nav>
+<head>
+  <style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 75%;
+      margin: 0 auto;
+      position: relative;
+      bottom: -20px;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+      background-color: #dddddd;
+    }
+
+    th{
+      background-color: #232222;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+    <th>Precio</th>
+    <th>Eliminar</th>
+    <th>Actualizar</th>
+  </tr>
+<tbody *ngFor="let Item of Details['favoritos']">
+  <tr>
+    <td>{{Item.Id_Producto}}</td>
+    <td>{{Item.name_producto}}</td>
+    <td>{{Item.description_producto}}</td>
+    <td>{{Item.precio_producto}}</td>
+    <td><button class="btn btn-success" (click)="onLogout()"></button></td>
+    <td><button class="btn btn-danger" (click)="onLogout()"></button></td>
+  </tr>
+</tbody>
+</table>
+</body>
+

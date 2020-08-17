@@ -3,16 +3,16 @@
 |   +--● user
 |   |  |--user.component.ts|.html
 |   |  +--● registration
-|   |  |  |--registration.component.ts|.html
+|   |  |  |--producto.component.ts|.html
 |   |  +--● login
 |   |     |--login.component.ts|.html
-|   |  
+|   |
 |   +--● home
 |   |  |--home.component.ts|.html
-|   |  
+|   |
 |   +--● shared
 |   |  |--user.service.ts
-|   |  
+|   |
 |   +--● auth
 |   |  |--auth.guard.ts
 |   |  |--auth.interceptor.ts

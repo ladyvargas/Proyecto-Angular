@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
-  templateUrl: './registration.component.html',
+  templateUrl: './producto.component.html',
   styles: []
 })
-export class RegistrationComponent implements OnInit {
+export class ProductoComponent implements OnInit {
 
   constructor(public service: UserService, private toastr: ToastrService) { }
 
@@ -17,15 +17,15 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.register().subscribe(
+    this.service.registerProducto().subscribe(
       (res: any) => {
         if (res.succeeded) {
           this.service.formModel.reset();
-          this.toastr.success('New user created!', 'Registration successful.');
+          this.toastr.success('New producto created!', 'Registration successful.');
         }
         else {
           this.service.formModel.reset();
-          this.toastr.success('New user created!', 'Registration successful.');
+          this.toastr.success('New producto created!', 'Registration successful.');
           res.errors.forEach(element => {
             switch (element.code) {
               case 'DuplicateUserName':
