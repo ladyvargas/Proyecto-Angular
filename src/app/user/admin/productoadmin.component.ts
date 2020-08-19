@@ -5,10 +5,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
-  templateUrl: './verproducto.component.html',
+  templateUrl: './productoadmin.component.html',
   styles: []
 })
-export class VerProductosComponent implements OnInit {
+export class ProductoadminComponent implements OnInit {
   Details;
   Details2;
 

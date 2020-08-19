@@ -6,6 +6,8 @@ import { RegistrationComponent } from './user/registration/registration.componen
 import { LoginComponent } from './user/login/login.component';
 import { VerProductosComponent } from './user/producto/verproducto.component';
 import { ProductoComponent } from './user/producto/producto.component';
+import { PedidosComponent } from './user/pedidos/pedidos.components';
+import { ProductoadminComponent } from './user/admin/productoadmin.component';
 import { HomeComponent } from './home/home.component';
 
 
@@ -20,6 +22,8 @@ const routes: Routes = [
   },
   { path: 'verproducto', component: VerProductosComponent },
   { path: 'producto', component: ProductoComponent },
+  { path: 'pedidos', component: PedidosComponent },
+  { path: 'productosadmin', component: ProductoadminComponent },
   {path:'home',component:HomeComponent,canActivate:[AuthGuard]}
 ];
 

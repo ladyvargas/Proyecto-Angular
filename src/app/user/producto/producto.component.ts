@@ -10,28 +10,24 @@ import { Router } from '@angular/router';
 })
 export class ProductoComponent implements OnInit {
 
-  constructor(public service: UserService, private toastr: ToastrService) { }
+  constructor(public service: UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.service.formModel.reset();
+    this.service.formModel2.reset();
   }
 
   onSubmit() {
     this.service.registerProducto().subscribe(
       (res: any) => {
         if (res.succeeded) {
-          this.service.formModel.reset();
-          this.toastr.success('New producto created!', 'Registration successful.');
+          this.service.formModel2.reset();
+          this.toastr.success('Nuevo producto creado!', 'Registration successful.');
         }
         else {
-          this.service.formModel.reset();
-          this.toastr.success('New producto created!', 'Registration successful.');
+          this.service.formModel2.reset();
+          this.toastr.success('Nuevo producto creado!', 'Registration successful.');
           res.errors.forEach(element => {
             switch (element.code) {
-              case 'DuplicateUserName':
-                this.toastr.error('Username is already taken','Registration failed.');
-                break;
-
               default:
               this.toastr.error(element.description,'Registration failed.');
                 break;
@@ -45,4 +41,12 @@ export class ProductoComponent implements OnInit {
     );
   }
 
+  onLogout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/user/login']);
+  }
+  ver() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/verproducto']);
+  }
 }

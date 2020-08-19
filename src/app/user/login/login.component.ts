@@ -24,16 +24,25 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.service.login(form.value).subscribe(
       (res: any) => {
+        console.log(res);
+        console.log(res.dataUser.roles);
+        var roles=res.dataUser.roles;
         localStorage.setItem('token', res.token);
-        this.router.navigateByUrl('/verproducto');
+        if(roles=="1"){
+          this.router.navigateByUrl('/productosadmin');
+        }else {
+          this.router.navigateByUrl('/verproducto');
+        }
       },
       err => {
-        this.toastr.error('Incorrect username or password.', 'Authentication failed.');
+        this.toastr.error('Contraseña o Correo incorrecto.', 'Autentificacion fallida.');
         if (err.status == 400)
-          this.toastr.error('Incorrect username or password.', 'Authentication failed.');
+          this.toastr.error('Contraseña o Correo incorrecto.', 'Autentificacion fallida.');
         else
           console.log(err);
       }
     );
   }
+
+
 }

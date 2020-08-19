@@ -1,6 +1,7 @@
 <nav class="navbar navbar-dark bg-dark">
-  <a class="navbar-brand text-white">PRODUCTOS-USUARIO</a>
+  <a class="navbar-brand text-white">PRODUCTOS</a>
   <button class="btn btn-success" (click)="ingresar()">Ingresar</button>
+  <button class="btn btn-success" (click)="ver()">Ver</button>
   <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Salir</button>
 </nav>
 <head>
@@ -34,20 +35,16 @@
     <th>Nombre</th>
     <th>Descripcion</th>
     <th>Precio</th>
-    <th>Actualizar</th>
-    <th>Eliminar</th>
   </tr>
-<tbody *ngFor="let Item of Details['favoritos']">
+  <tbody *ngFor="let Item of Details['favoritos']">
   <tr>
     <td>{{Item.Id_Producto}}</td>
     <td>{{Item.name_producto}}</td>
     <td>{{Item.description_producto}}</td>
     <td>{{Item.precio_producto}}</td>
-    <td><button type="button" class="delete-btn" (click)='agregarProduct(Item.Id_Producto)'>Agregar</button></td>
-    <td><button type="button" class="btn btn-danger" (click)="eliminar()"></button></td>
   </tr>
-</tbody>
+  </tbody>
 </table>
-<button class="delete-btn" (click)="pedidos()">Mis Pedidos</button>
 </body>
+
 

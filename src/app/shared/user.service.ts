@@ -12,6 +12,8 @@ export class UserService {
   readonly BaseURII = 'http://localhost:4040/api';
 
   formModel = this.fb.group({
+    id: ['', Validators.required],
+    roles: ['', Validators.required],
     UserName: ['', Validators.required],
     Email: ['', Validators.email],
     FullName: [''],
@@ -24,9 +26,9 @@ export class UserService {
 
   formModel2 = this.fb.group({
     Id_Producto: ['', Validators.required],
-    name_producto: ['', Validators.required],
+    name_producto: [''],
     description_producto: [''],
-    precio_producto: ['', Validators.required]
+    precio_producto: ['']
   });
 
   comparePasswords(fb: FormGroup) {
@@ -41,6 +43,8 @@ export class UserService {
 
   register() {
     var body = {
+      id: this.formModel.value.id,
+      roles: this.formModel.value.roles,
       UserName: this.formModel.value.UserName,
       Email: this.formModel.value.Email,
       FullName: this.formModel.value.FullName,
@@ -56,14 +60,19 @@ export class UserService {
   }
 
   registerProducto() {
-    var body = {
+    var body2 = {
       Id_Producto: this.formModel2.value.Id_Producto,
       name_producto: this.formModel2.value.name_producto,
       description_producto: this.formModel2.value.description_producto,
       precio_producto: this.formModel2.value.precio_producto
     };
-    console.log(body);
-    return this.http.post(this.BaseURI + '/createproducto', body);
+    console.log(body2);
+    return this.http.post(this.BaseURI + '/createproducto', body2);
+  }
+
+  registerPedido(product) {
+    console.log(product);
+    return this.http.get(this.BaseURII + '/pedidos?id=' + product);
   }
 
   getUserProfile() {
@@ -73,4 +82,11 @@ export class UserService {
   getProductos() {
     return this.http.get(this.BaseURII + '/producto');
   }
+  pedidos() {
+    return this.http.get(this.BaseURII + '/listapedidos');
+  }
+  delete() {
+    return this.http.get(this.BaseURII + '/producto/');
+  }
+
 }

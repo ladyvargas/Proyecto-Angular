@@ -5,17 +5,16 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
-  templateUrl: './verproducto.component.html',
+  templateUrl: './pedidos.html',
   styles: []
 })
-export class VerProductosComponent implements OnInit {
+export class PedidosComponent implements OnInit {
   Details;
-  Details2;
 
   constructor(private router: Router, public service: UserService) { }
 
-  ngOnInit() :void{
-    this.service.getProductos().subscribe(
+  ngOnInit() :void {
+    this.service.pedidos().subscribe(
       res => {
         console.log(res);
         this.Details = res;
@@ -34,15 +33,8 @@ export class VerProductosComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/producto']);
   }
-  eliminar() {
+  ver() {
     localStorage.removeItem('token');
-    this.router.navigate(['/user/login']);
-  }
-  pedidos() {
-    localStorage.removeItem('token');
-    this.router.navigate(['/pedidos']);
-  }
-  agregarProduct(product) {
-    this.service.registerPedido(product);
+    this.router.navigate(['/verproducto']);
   }
 }
